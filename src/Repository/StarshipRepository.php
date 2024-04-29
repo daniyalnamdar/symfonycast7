@@ -52,6 +52,7 @@ class StarshipRepository extends ServiceEntityRepository
     {
         $starship1 = new Starship();
         $starship1
+            ->setId(1)
             ->setClass('Garden')
             ->setName('USS LeafyCruiser (NNC-001)')
             ->setCaptain('Daniyal Namdar')
@@ -59,11 +60,23 @@ class StarshipRepository extends ServiceEntityRepository
 
         $starship2 = new Starship();
         $starship2
+            ->setId(2)
             ->setClass('Park')
             ->setName('USS LeafyCruiser (NNC-002)')
             ->setCaptain('Ozge Koz')
             ->setStatus('under construction');
 
         return [$starship1, $starship2];
+    }
+
+    public function findId(int $id): ?Starship
+    {
+        foreach ($this->findAllOf() as $starship) {
+            if ($starship->getId() === $id) {
+                return $starship;
+            }
+        }
+
+        return null;
     }
 }
