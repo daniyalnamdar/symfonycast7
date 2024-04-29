@@ -4,8 +4,8 @@
 <h1> Starship: your monopoly-busting option for starship part! </h1>
 
 <div>
-    Brows through {{ numberOfStarships }} starships!
-    {% if numberOfStarships > 300 %}
+    Brows through {{ ships|length * 10 }} starships!
+    {% if ships|length > 300 %}
         <p>That's a shipload of ships!</p>
     {% endif %}
 </div>
